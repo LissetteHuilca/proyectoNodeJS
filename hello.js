@@ -39,8 +39,49 @@ app.get('/', function (req,res) {
   		
 });
 
+app.get('/iniciarsesion', function (req,res) {
+	res.render('partials/iniciarsesion');
+  		
+});
+
+app.get('/menu', function (req,res) {
+	res.render('partials/menu');
+  		
+});
+
+app.get('/menuUsuarios', function (req,res) {
+	res.render('partials/menuUsuarios');
+  		
+});
+
+app.get('/menuNinos', function (req,res) {
+	res.render('partials/menuNinos');
+  		
+});
+
+app.get('/menuRompecabezas', function (req,res) {
+	res.render('partials/menuRompecabezas');
+  		
+});
+
+app.get('/editarUsuario', function (req,res) {
+	res.render('partials/editarUsuario');
+  		
+});
+
+app.get('/nuevoUsuario', function (req,res) {
+	res.render('partials/nuevoUsuario');
+  		
+});
+
+
 app.get('/listarRompecabezas', function (req,res) {
 	res.render('partials/listarRompecabezas');
+  		
+});
+
+app.get('/listarRompecabezasPorUsuario', function (req,res) {
+	res.render('partials/listarRompecabezasPorUsuario');
   		
 });
 
@@ -73,6 +114,26 @@ app.get('/listarRompecbz', (req, res, next) => {
         }
 
         client.query('SELECT * FROM rompecabezas', function(err, result) {
+            if(err) {
+                return console.error('error running query', err);
+            }
+
+            client.end();
+            return res.json(result.rows);
+            
+        }); 
+    });
+});
+
+app.get('/listarNinos', (req, res, next) => {
+    var client = new pg.Client(conString);
+    client.connect(function(err) {
+        if(err) {
+            return console.error('could not connect to postgres', err);
+            return res.status(500).json({success: false, data: err});
+        }
+
+        client.query('SELECT * FROM ninos', function(err, result) {
             if(err) {
                 return console.error('error running query', err);
             }
