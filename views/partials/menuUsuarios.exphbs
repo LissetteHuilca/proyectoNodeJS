@@ -1,0 +1,17 @@
+ <body onload="listarMenuUsuarios()" id="bodyFondo">
+    <div class="container">
+        
+         <a href="/menu"><img src="../img/inicio.png" id="recargar"></a>
+        
+        <a class="nuevoUsr" href="/nuevoUsuario">Nuevo Usuario</a>
+        
+       <div class="row" id="listaUsuarios">
+              
+       </div>
+        
+
+    </div>
+    
+    <div id="audioFondo">
+    </div>
+ </body>

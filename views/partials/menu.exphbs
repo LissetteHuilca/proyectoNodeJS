@@ -1,0 +1,39 @@
+ <body onload="cargarMenu()" id="bodyFondo">
+    <div class="container">
+        
+         <a href="/"><img src="../img/inicio.png" id="recargar"></a>
+        
+        <div id="nombre">
+        <img src="../img/tema.png" class="img-fluid">
+        
+        </div>
+        
+       <div class="row" id="lista">
+              <div class='col-sm-4'>
+		 <a href="/menuUsuarios"><button id='btnLista'>
+		 <h3 id='idh3'>Usuarios</h3>
+		 <img class='imgPortada img-fluid' src='../img/tema.png' alt=''>
+		 </button></a>
+	 </div>
+     
+     
+     <div class='col-sm-4'>
+		 <a href="/menuNinos"><button id='btnLista'>
+		 <h3 id='idh3'>Niños</h3>
+		 <img class='imgPortada img-fluid' src='../img/tema.png' alt=''>
+		 </button></a>
+	 </div>
+     
+     <div class='col-sm-4'>
+		 <a href="/menuRompecabezas"><button id='btnLista'>
+		 <h3 id='idh3'>Rompecabezas</h3>
+		 <img class='imgPortada img-fluid' src='../img/tema.png' alt=''>
+		 </button></a>
+	 </div>
+       </div>
+
+    </div>
+    
+    <div id="audioFondo">
+    </div>
+ </body>

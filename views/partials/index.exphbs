@@ -1,31 +1,16 @@
+<body onload ="listarNiños()"> 
 <div class="container"> 
-        
-        
   
   <div id="logo"><img src="img/rompecabeza.png" id="nombreRmp" class="img-fluid"> </div>
   
-        
-<div id="boton">
-    
-    <div>Usuario:
-    <input id="username" type="usuario" placeholder="Usuario">
+  <a href="/iniciarsesion"><button>Iniciar Sesion</button></a>
+  
+<div class="row" id="listaNiños">
+              
+       </div>
+       
+       <div id="audioFondo">
     </div>
-    <br>
-    <div>Clave: 
-        <input id="password" type="password" placeholder="Clave">
-    </div>
-    
-    
-    <br>
-  <div>
-      
-     <button id="validar"> Jugar </button>
-      
-      </div>
-    </div>
-    </div>
-    <div id="audioError">    
-    </div>
-    
-     
 
+     </div>
+ </body>
