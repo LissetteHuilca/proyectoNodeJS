@@ -55,6 +55,132 @@ function listarRompecabezas(){
         
         success: function (data) {
 	  rompecabezas=data;              
+	var idNino = localStorage.getItem("idnino");
+	$.each(rompecabezas, function(i, objRmp){
+	
+		   $("#lista").append("<div class='col-sm-4'>\
+		               <button id='btnLista' onclick='enviar("+i+")'>\
+		               <h3 id='idh3'>"+ objRmp.titulo + "</h3>\
+		               <img class='imgPortada img-fluid' src='" + objRmp.portada + "'alt=''>\
+		               </button>\
+		               </div>"); 
+	        
+	
+	});	
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("eror"); 
+           
+        }
+    });
+
+};
+
+function listarNiños(){
+   var niños=[];
+    
+    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
+    $("#audioF")[0].play();
+    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mp3' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
+    $("#audioP")[0].play();
+    
+    $.ajax({
+        url: '/listarNinos',
+        type: 'GET',
+       
+        cache: false,
+        contentType: false,
+        processData: false,
+        
+        success: function (data) {
+	  niños=data;              
+	//var idUsuario = localStorage.getItem("idUser");
+	$.each(niños, function(i, objNino){
+	
+		   $("#listaNiños").append("<div class='col-sm-4'>\
+		               <button id='btnLista' onclick='cambiar("+objNino.id+")'>\
+		               <h3 id='idh3'>"+ objNino.nombre + "</h3>\
+		               <img class='imgPortada img-fluid' src='" + objNino.imagen + "'alt=''>\
+		               </button>\
+		               </div>"); 
+	        
+	
+	});	
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+
+    
+};
+
+function listarMenuUsuarios(){
+   var usuarios=[];
+    
+    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
+    $("#audioF")[0].play();
+    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mp3' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
+    $("#audioP")[0].play();
+    
+    $.ajax({
+        url: '/listarUsuarios',
+        type: 'GET',
+       
+        cache: false,
+        contentType: false,
+        processData: false,
+        
+        success: function (data) {
+	  usuarios=data;              
+	//var idUsuario = localStorage.getItem("idUser");
+	$.each(usuarios, function(i, objUsr){
+	
+		   $("#listaUsuarios").append("<div class='col-sm-4'>\
+                    <h2 id='idh2'>"+ objUsr.nombre + "</h2>\
+                    <h3 id='idh3'>"+ objUsr.usuario + "</h3>\
+                    <h3 id='idh3'>"+ objUsr.contraseña + "</h3>\
+		            <button id='btnLista' onclick='cambiar("+objUsr.id+")'>Editar</button>\
+                    <button id='btnLista' onclick='cambiar("+objUsr.id+")'>Eliminar</button>\
+		               </div>"); 
+	        
+	
+	});	
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+
+    
+};
+
+function listarRompecabezasPorUsuario(){
+   var rompecabezas=[];
+    
+    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
+    $("#audioF")[0].play();
+    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mp3' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
+    $("#audioP")[0].play();
+    
+    $.ajax({
+        url: '/listarRompecbz',
+        type: 'GET',
+       
+        cache: false,
+        contentType: false,
+        processData: false,
+        
+        success: function (data) {
+	  rompecabezas=data;              
 	var idUsuario = localStorage.getItem("idUser");
 	$.each(rompecabezas, function(i, objRmp){
 	if(objRmp.idusuario==idUsuario){
@@ -76,9 +202,12 @@ function listarRompecabezas(){
         }
     });
 
-    
 };
 
+function cambiar(idnino) {
+    localStorage.setItem("idnino", idnino);//guardar en cache
+    window.location = '/listarRompecabezas';
+}
 
  function enviar(pos) {
     localStorage.setItem("posRmp", pos);//guardar en cache
@@ -229,7 +358,7 @@ function validar(){
 		   if(user == res.usuario && pass == res.contraseña){
 		       localStorage.setItem("idUser", i);
 		       flag++;
-		       window.location = '/listarRompecabezas'
+		       window.location = '/menu'
 		   }
 	        });
 	        
