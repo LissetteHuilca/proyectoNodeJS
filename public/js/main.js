@@ -118,7 +118,84 @@ function listarNiños(){
     });
 
     
-};
+}
+
+function guardarUsuario(){
+    var usuario = {
+        usuario:$("#usuario").val(),
+        pass:$("#contraseña").val(),
+        nombre:$("#nombre").val()
+    }
+    
+    $.ajax({
+        url: '/guardarUsuarios',
+        type: 'POST',
+        data: usuario,
+        cache: false,
+        
+        success: function (data) {
+	           window.location='/menuUsuarios'
+            
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+  }  
+
+function guardarEditarUsuario(){
+    var usuario = {
+        id:localStorage.getItem("idUsuario"),
+        usuario:$("#usuario").val(),
+        pass:$("#contraseña").val(),
+        nombre:$("#nombre").val()
+    }
+    
+    $.ajax({
+        url: '/guardarEditarUsuario',
+        type: 'POST',
+        data: usuario,
+        cache: false,
+        
+        success: function (data) {
+	           window.location='/menuUsuarios'
+            
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+  }  
+
+function eliminarUsuario(idUsuario){
+    var usuario = {
+        idUsr:idUsuario
+    }
+    
+    $.ajax({
+        url: '/eliminarUsuarios',
+        type: 'POST',
+        data: usuario,
+        cache: false,
+        
+        success: function (data) {
+	           window.location='/menuUsuarios'
+            
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+  }  
 
 function listarMenuUsuarios(){
    var usuarios=[];
@@ -144,9 +221,9 @@ function listarMenuUsuarios(){
 		   $("#listaUsuarios").append("<div class='col-sm-4'>\
                     <h2 id='idh2'>"+ objUsr.nombre + "</h2>\
                     <h3 id='idh3'>"+ objUsr.usuario + "</h3>\
-                    <h3 id='idh3'>"+ objUsr.contraseña + "</h3>\
-		            <button id='btnLista' onclick='cambiar("+objUsr.id+")'>Editar</button>\
-                    <button id='btnLista' onclick='cambiar("+objUsr.id+")'>Eliminar</button>\
+                    <h3 id='idh3'>"+ objUsr.contrasena + "</h3>\
+		            <button id='btnLista' onclick='editarUsuario("+objUsr.id+")'>Editar</button>\
+                    <button id='btnLista' onclick='eliminarUsuario("+objUsr.id+")'>Eliminar</button>\
 		               </div>"); 
 	        
 	
@@ -161,7 +238,128 @@ function listarMenuUsuarios(){
     });
 
     
-};
+}
+
+function listarMenuNinos(){
+   var niños=[];
+    
+    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
+    $("#audioF")[0].play();
+    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mp3' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
+    $("#audioP")[0].play();
+    
+    $.ajax({
+        url: '/listarNinos',
+        type: 'GET',
+       
+        cache: false,
+        contentType: false,
+        processData: false,
+        
+        success: function (data) {
+	  niños=data;              
+	//var idUsuario = localStorage.getItem("idUser");
+	$.each(niños, function(i, objNino){
+	$("#listarNiños").append("<div class='col-sm-4'>\
+                    <h2 id='idh2'>"+ objNino.nombre + "</h2>\
+                    <h3 id='idh3'>"+ objNino.score + "</h3>\
+                    <img class='imgPortada img-fluid' src='" + objNino.imagen + "'alt=''>\
+		            <button id='btnLista' onclick='editarNino("+objNino.id+")'>Editar</button>\
+                    <button id='btnLista' onclick='eliminarNino("+objNino.id+")'>Eliminar</button>\
+		               </div>");
+	        
+	
+	});	
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+    
+}
+
+function guardarNino(){
+    var nino = {
+        nombre:$("#nombre").val(),
+        score:$("#score").val(),
+        imagen:$("#imagen").val()
+    }
+    
+    $.ajax({
+        url: '/guardarNinos',
+        type: 'POST',
+        data: nino,
+        cache: false,
+        
+        success: function (data) {
+	           window.location='/menuNinos'
+            
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+  } 
+
+
+function guardarEditarNino(){
+    var nino = {
+        id:localStorage.getItem("idNino"),
+        
+        nombre:$("#nombre").val(),
+        score:$("#score").val(),
+        imagen:$("#imagen").val()
+        
+    }
+    
+    $.ajax({
+        url: '/guardarEditarNino',
+        type: 'POST',
+        data: nino,
+        cache: false,
+        
+        success: function (data) {
+	           window.location='/menuNinos'
+            
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+  } 
+
+function eliminarNino(idNino){
+    var nino = {
+        idN:idNino
+    }
+    
+    $.ajax({
+        url: '/eliminarNinos',
+        type: 'POST',
+        data: nino,
+        cache: false,
+        
+        success: function (data) {
+	           window.location='/menuNinos'
+            
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+  }  
 
 function listarRompecabezasPorUsuario(){
    var rompecabezas=[];
@@ -202,17 +400,83 @@ function listarRompecabezasPorUsuario(){
         }
     });
 
-};
+}
 
 function cambiar(idnino) {
     localStorage.setItem("idnino", idnino);//guardar en cache
     window.location = '/listarRompecabezas';
 }
 
+function cargarUsuario() {
+    var idUsuario = localStorage.getItem("idUsuario");//guardar en cache
+    var usuario={
+        idUsr:idUsuario
+        }
+    $.ajax({
+        url: '/listarUsuarioPorId',
+        type: 'POST',
+        data: usuario,
+        cache: false,
+        
+        success: function (data) {
+	  
+    $("#usuario").val(data[0].usuario);
+    $("#contraseña").val(data[0].contrasena);
+    $("#nombre").val(data[0].nombre);
+            
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+    
+}
+
+function editarUsuario(idUsuario) {
+    localStorage.setItem("idUsuario", idUsuario);//guardar en cache
+    window.location = '/editarUsuario';
+}
+
+function cargarNino() {
+    var idNino = localStorage.getItem("idNino");//guardar en cache
+    var nino={
+        idN:idNino
+        }
+    $.ajax({
+        url: '/listarNinoPorId',
+        type: 'POST',
+        data: nino,
+        cache: false,
+        
+        success: function (data) {
+	  
+    $("#nombre").val(data[0].nombre);
+    $("#score").val(data[0].score);
+    $("#imagen").val(data[0].imagen);
+            
+        },
+        //si ha ocurrido un error
+        error: function () {
+            console.log("error");
+             alert("error"); 
+           
+        }
+    });
+    
+}
+
+function editarNino(idNino) {
+    localStorage.setItem("idNino", idNino);//guardar en cache
+    window.location = '/editarNino';
+}
+
  function enviar(pos) {
     localStorage.setItem("posRmp", pos);//guardar en cache
     window.location = "rompecabeza.html";
-};
+}
 
 
 var intentos=0;
@@ -355,7 +619,7 @@ function validar(){
 	        var pass = $("#password").val();
 	        var flag = 0;
 	        $.each(usuarios, function(i, res){
-		   if(user == res.usuario && pass == res.contraseña){
+		   if(user == res.usuario && pass == res.contrasena){
 		       localStorage.setItem("idUser", i);
 		       flag++;
 		       window.location = '/menu'
