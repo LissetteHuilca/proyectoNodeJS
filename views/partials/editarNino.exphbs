@@ -1,0 +1,38 @@
+<body id="bodyFondo" onload="cargarNino()">
+    <div class="container">
+        
+         <a href="/menuNinos"><img src="../img/inicio.png" id="recargar"></a>
+        
+       
+        
+       <div class="fondoFormulario">
+       
+       <form id="formNino">
+   
+    <h3>Crea un nuevo usuario</h3>
+    <fieldset>
+      <input placeholder="Nombre" id="nombre" type="text" tabindex="1">
+    </fieldset>
+    
+    <fieldset>
+      <input placeholder="Puntos" id="score" type="number" tabindex="2">
+    </fieldset>
+    
+    <fieldset>
+      <input placeholder="Imagen" id="imagen" type="text" tabindex="3">
+    </fieldset>
+   
+    <fieldset class="divBotonesUsuario">
+      <input type="button" id="btnGuardarNino" onclick="guardarEditarNino()" value="GUARDAR" class="btnUsuarioVibrar"></input>
+    </fieldset>
+   
+  </form>
+              
+       </div>
+        
+
+    </div>
+    
+    <div id="audioFondo">
+    </div>
+ </body>

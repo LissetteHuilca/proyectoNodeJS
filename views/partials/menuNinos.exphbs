@@ -1,18 +1,15 @@
- <body onload="listarRompecabezas()" id="bodyFondo">
+ <body onload="listarMenuNinos()" id="bodyFondo">
     <div class="container">
         
          <a href="/"><img src="../img/inicio.png" id="recargar"></a>
         
-        <div id="nombre">
-        <img src="../img/tema.png" class="img-fluid">
+        <a class="nuevoNino" href="/nuevoNino">Nuevo Niño</a>
         
-        </div>
-        
-       <div class="row" id="lista">
+       <div class="row" id="listarNiños">
               
        </div>
         
-        <a id="exportar" href="">Descargar JSON</a>
+        
 
     </div>
     
