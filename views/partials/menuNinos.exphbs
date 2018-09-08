@@ -1,16 +1,14 @@
  <body onload="listarMenuNinos()" id="bodyFondo">
     <div class="container">
         
-         <a href="/"><img src="../img/inicio.png" id="recargar"></a>
+         <a href="/menu"><img src="../img/inicio.png" id="recargar"></a>
         
-        <a class="nuevoNino" href="/nuevoNino">Nuevo Niño</a>
-        
-       <div class="row" id="listarNiños">
+       <div class="row usuarios" id="listarNiños">
               
        </div>
         
-        
-
+       <a class="nuevoNino" href="/nuevoNino"><button class="iniciar btn">Nuevo Niño</button></a>
+       
     </div>
     
     <div id="audioFondo">

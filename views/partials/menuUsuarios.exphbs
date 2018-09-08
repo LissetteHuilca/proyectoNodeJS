@@ -3,13 +3,12 @@
         
          <a href="/menu"><img src="../img/inicio.png" id="recargar"></a>
         
-        <a class="nuevoUsr" href="/nuevoUsuario">Nuevo Usuario</a>
-        
-       <div class="row" id="listaUsuarios">
+       <div class="row usuarios" id="listaUsuarios">
+       
               
        </div>
         
-
+     <a class="nuevoUsr" href="/nuevoUsuario"><button class="iniciar btn">Nuevo Usuario</button></a>
     </div>
     
     <div id="audioFondo">

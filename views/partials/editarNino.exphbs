@@ -9,19 +9,19 @@
        
        <form id="formNino">
    
-    <h3>Crea un nuevo usuario</h3>
+    <h3>Editar un avatar</h3>
     <fieldset>
       <input placeholder="Nombre" id="nombre" type="text" tabindex="1">
     </fieldset>
-    
+    <br>
     <fieldset>
       <input placeholder="Puntos" id="score" type="number" tabindex="2">
     </fieldset>
-    
+    <br>
     <fieldset>
       <input placeholder="Imagen" id="imagen" type="text" tabindex="3">
     </fieldset>
-   
+    <br>
     <fieldset class="divBotonesUsuario">
       <input type="button" id="btnGuardarNino" onclick="guardarEditarNino()" value="GUARDAR" class="btnUsuarioVibrar"></input>
     </fieldset>

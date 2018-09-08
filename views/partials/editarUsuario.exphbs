@@ -1,7 +1,7 @@
  <body id="bodyFondo" onload="cargarUsuario()">
     <div class="container">
         
-         <a href="/menuUusarios"><img src="../img/inicio.png" id="recargar"></a>
+         <a href="/menuUsuarios"><img src="../img/inicio.png" id="recargar"></a>
         
        
         
@@ -9,17 +9,19 @@
        
        <form id="formUsuario">
    
-    <h3>Crea un nuevo usuario</h3>
+    <h3>Editar un usuario</h3>
     <fieldset>
-      <input placeholder="Usuario" id="usuario" type="text" tabindex="1">
+      Usuario: <input placeholder="Usuario" id="usuario" type="text" tabindex="1">
     </fieldset>
+    <br>
     <fieldset>
-      <input placeholder="Contrasena" id="contraseña" type="text" tabindex="2">
+      Contraseña: <input placeholder="Contrasena" id="contraseña" type="text" tabindex="2">
     </fieldset>
+    <br>
     <fieldset>
-      <input placeholder="Nombre" id="nombre" type="text" tabindex="3">
+      Nombre: <input placeholder="Nombre" id="nombre" type="text" tabindex="3">
     </fieldset>
-   
+   <br>
     <fieldset class="divBotonesUsuario">
       <input type="button" id="btnGuardarUsuario" onclick="guardarEditarUsuario()" value="GUARDAR" class="btnUsuarioVibrar"></input>
     </fieldset>
