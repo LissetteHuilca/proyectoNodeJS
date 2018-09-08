@@ -219,12 +219,12 @@ function listarMenuUsuarios(){
 	$.each(usuarios, function(i, objUsr){
 	
 		   $("#listaUsuarios").append("<div class='col-sm-4'>\
-                    <h2 id='idh2'>"+ objUsr.nombre + "</h2>\
-                    <h3 id='idh3'>"+ objUsr.usuario + "</h3>\
-                    <h3 id='idh3'>"+ objUsr.contrasena + "</h3>\
-		            <button id='btnLista' onclick='editarUsuario("+objUsr.id+")'>Editar</button>\
-                    <button id='btnLista' onclick='eliminarUsuario("+objUsr.id+")'>Eliminar</button>\
-		               </div>"); 
+                    <h4 id='idh2'>Nombre: "+ objUsr.nombre + "</h4>\
+                    <h5 id='idh2'>Usuario: "+ objUsr.usuario + "</h5>\
+                    <h5 id='idh2'>Contraseña: "+ objUsr.contrasena + "</h5>\
+		            <button class='btnAdmin btn'  onclick='editarUsuario("+objUsr.id+")'>Editar</button>\
+                    <button class='btnAdmin btn' onclick='eliminarUsuario("+objUsr.id+")'>Eliminar</button>\
+		            </table></div>"); 
 	        
 	
 	});	
@@ -260,12 +260,12 @@ function listarMenuNinos(){
 	  niños=data;              
 	//var idUsuario = localStorage.getItem("idUser");
 	$.each(niños, function(i, objNino){
-	$("#listarNiños").append("<div class='col-sm-4'>\
-                    <h2 id='idh2'>"+ objNino.nombre + "</h2>\
-                    <h3 id='idh3'>"+ objNino.score + "</h3>\
+	$("#listarNiños").append("<div class='col-sm-4 ninos'>\
+                    <h4 id='idh2'>"+ objNino.nombre + "</h4>\
+                    <h5 id='idh2'>Score: "+ objNino.score + "</h5>\
                     <img class='imgPortada img-fluid' src='" + objNino.imagen + "'alt=''>\
-		            <button id='btnLista' onclick='editarNino("+objNino.id+")'>Editar</button>\
-                    <button id='btnLista' onclick='eliminarNino("+objNino.id+")'>Eliminar</button>\
+		            <button class='btnAdmin btn' onclick='editarNino("+objNino.id+")'>Editar</button>\
+                    <button class='btnAdmin btn' onclick='eliminarNino("+objNino.id+")'>Eliminar</button>\
 		               </div>");
 	        
 	
