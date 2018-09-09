@@ -1,0 +1,74 @@
+ <body id="bodyFondo" onload="cargarRompecabeza()">
+    <div class="container">
+        
+         <a href="menuRompecabezas"><img src="../img/inicio.png" id="recargar"></a>
+        <button class="nuevoUsr" onclick='guardarEditarRompecabeza()'>Guardar Cambios</button>
+        <div id="nombre">
+            <h1 class="txtportada">ROMPECABEZA</h1>
+        </div>
+            <div class="row" id="lista">
+                <div class="col-md-6 col-sm-6">
+                    <input id="titulo" type="text" value="" placeholder="TITULO">
+                </div>      
+                <div class="col-md-6 col-sm-6">
+                <h3>SONIDO</h3>
+                <div id="divSonido" class="portada col-md-12 col-sm-12"></div>
+                <div class="col-md-12 col-sm-12">
+                    <form enctype="multipart/form-data" class="formularioSonido">
+                        <input name="archivo" type="file" id="sonido" />
+                        <br />
+                        <br />
+                        <input type="button" class="añadirSonido" value="Añadir" />
+                        <br />
+                    </form>
+                    <!--div para visualizar mensajes-->
+                    <div class="messagesE"></div>
+                    <br />
+                    <br />
+                    <!--div para visualizar en el caso de imagen-->
+                    <div class="showImage"></div>
+                </div>
+                </div>
+                
+            </div>
+            
+            <div class="row" id="lista">
+                <div class="col-sm-3">
+                    <div class="col-md-3 col-sm-3">
+                         <h2>Piezas</h2>
+                         <select id="piezas" style="width: 100%;" >
+                          <option>4</option>
+                          <option>9</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="divImagen" class="portada col-md-4 col-sm-4">IMAGEN</div>
+                <div class="col-md-4 col-sm-4">
+                    <form enctype="multipart/form-data" class="formularioImagen">
+                        <input name="archivo" type="file" id="imgPortada" />
+                        <br />
+                        <br />
+                        <input type="button" class="añadirImagen" value="Añadir" />
+                        <br />
+                    </form>
+                    <!--div para visualizar mensajes-->
+                    <div class="messagesE"></div>
+                    <br />
+                    <br />
+                    <!--div para visualizar en el caso de imagen-->
+                    <div class="showImage"></div>
+                </div>
+            </div>
+            
+            <div class="row" id="lista">
+                <div class="col-md-4 col-sm-4">
+                <button onclick="visualizar()">Visualizar</button>
+                </div>
+                <div id="divImagenRmp" class="portada col-md-4 col-sm-4"></div>
+            </div>
+    </div>
+    
+    <div id="audioFondo">
+    </div>
+ </body>

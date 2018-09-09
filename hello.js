@@ -2,8 +2,8 @@
 var http     = require('http'),
 	bodyParser   = require('body-parser');
 
-var multer = require('multer'); 
-const pg    = require('pg');
+var multer = require('multer'); //multiple form data
+const pg    = require('pg');//postgres
 
 pg.defaults.ssl = true;
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/juego_rompecabezas';
@@ -13,9 +13,9 @@ var conString = "postgres://postgres:postgres@localhost:5432/juego_rompecabezas"
 var express = require('express');
 var exphbs  = require('express-handlebars');
 
-var formidable = require('formidable'),
-    util = require('util'),
-    fs   = require('fs-extra');
+var formidable = require('formidable'), //paa parsear upload files
+    fs   = require('fs-extra'); //copiar img sin overwrite
+
 var app = express();
 
 
@@ -34,66 +34,64 @@ app.engine( 'exphbs', exphbs( {
 app.set( 'view engine', 'exphbs' );
 app.set('port', (process.env.PORT || 5000))
 
+//RUTAS
 app.get('/', function (req,res) {
 	res.render('partials/index');
-  		
 });
 
 app.get('/iniciarsesion', function (req,res) {
 	res.render('partials/iniciarsesion');
-  		
 });
 
 app.get('/menu', function (req,res) {
 	res.render('partials/menu');
-  		
 });
 
+//rutas usuarios
 app.get('/menuUsuarios', function (req,res) {
 	res.render('partials/menuUsuarios');
-  		
 });
-
-app.get('/menuNinos', function (req,res) {
-	res.render('partials/menuNinos');
-  		
-});
-
-app.get('/menuRompecabezas', function (req,res) {
-	res.render('partials/menuRompecabezas');
-  		
-});
-
 app.get('/editarUsuario', function (req,res) {
 	res.render('partials/editarUsuario');
-  		
 });
 
 app.get('/nuevoUsuario', function (req,res) {
 	res.render('partials/nuevoUsuario');
-  		
 });
 
+//rutas niños
+app.get('/menuNinos', function (req,res) {
+	res.render('partials/menuNinos');
+});
 app.get('/nuevoNino', function (req,res) {
 	res.render('partials/nuevoNino');
-  		
 });
 
 app.get('/editarNino', function (req,res) {
 	res.render('partials/editarNino');
-  		
+});
+
+app.get('/rompecabezanino', function (req,res) {
+	res.render('partials/rompecabezanino');
+});
+
+//rutas rompecabezas
+app.get('/nuevoRompecabeza', function (req,res) {
+	res.render('partials/nuevoRompecabeza');
 });
 
 app.get('/listarRompecabezas', function (req,res) {
 	res.render('partials/listarRompecabezas');
-  		
 });
 
-app.get('/listarRompecabezasPorUsuario', function (req,res) {
-	res.render('partials/listarRompecabezasPorUsuario');
-  		
+app.get('/menuRompecabezas', function (req,res) {
+	res.render('partials/menuRompecabezas');	
+});
+app.get('/editarRompecabeza', function (req,res) {
+	res.render('partials/editarRompecabeza');	
 });
 
+//CRUD USUARIOS
 app.get('/listarUsuarios', (req, res, next) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
@@ -194,6 +192,8 @@ app.post('/eliminarUsuarios', (req, res) => {
     });
 });
 
+//CRUD NIÑOS
+
 app.post('/guardarNinos', (req, res) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
@@ -274,6 +274,27 @@ app.post('/listarNinoPorId', (req, res) => {
     });
 });
 
+app.get('/listarNinos', (req, res, next) => {
+    var client = new pg.Client(conString);
+    client.connect(function(err) {
+        if(err) {
+            return console.error('could not connect to postgres', err);
+            return res.status(500).json({success: false, data: err});
+        }
+
+        client.query('SELECT * FROM ninos', function(err, result) {
+            if(err) {
+                return console.error('error running query', err);
+            }
+
+            client.end();
+            return res.json(result.rows);
+            
+        }); 
+    });
+});
+
+//CRUD ROMPECABEZAS
 app.get('/listarRompecbz', (req, res, next) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
@@ -294,7 +315,7 @@ app.get('/listarRompecbz', (req, res, next) => {
     });
 });
 
-app.get('/listarNinos', (req, res, next) => {
+app.post('/listarRompecbzPorId', (req, res) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
         if(err) {
@@ -302,7 +323,7 @@ app.get('/listarNinos', (req, res, next) => {
             return res.status(500).json({success: false, data: err});
         }
 
-        client.query('SELECT * FROM ninos', function(err, result) {
+        client.query("SELECT * FROM rompecabezas WHERE id="+req.body.id+";", function(err, result) {
             if(err) {
                 return console.error('error running query', err);
             }
@@ -313,7 +334,97 @@ app.get('/listarNinos', (req, res, next) => {
         }); 
     });
 });
+
+app.post('/eliminarRmp', (req, res) => {
+    var client = new pg.Client(conString);
+    client.connect(function(err) {
+        if(err) {
+            return console.error('could not connect to postgres', err);
+            return res.status(500).json({success: false, data: err});
+        }
+
+        client.query("DELETE FROM rompecabezas WHERE id="+req.body.id+";", function(err, result) {
+            if(err) {
+                return console.error('error running query', err);
+            }
+
+            client.end();
+            return res.json(result.rows);
+            
+        }); 
+    });
+});
+
+app.post('/guardarRompecabeza', (req, res) => {
+    var client = new pg.Client(conString);
+    client.connect(function(err) {
+        if(err) {
+            return console.error('could not connect to postgres', err);
+            return res.status(500).json({success: false, data: err});
+        }
+
+        client.query("INSERT INTO rompecabezas (titulo, sonido, imagen, piezas,idusuario) VALUES ('"+req.body.titulo+"','"+req.body.sonido+"','"+req.body.imagen+"',"+req.body.piezas+","+req.body.idusuario+")", function(err, result) {
+            if(err) {
+                return console.error('error running query', err);
+            }
+
+            client.end();
+            return res.json(result.rows);
+            
+        }); 
+    });
+});
+
+app.post('/guardarEditarRompecabeza', (req, res) => {
+    var client = new pg.Client(conString);
+    client.connect(function(err) {
+        if(err) {
+            return console.error('could not connect to postgres', err);
+            return res.status(500).json({success: false, data: err});
+        }
+
+        client.query("UPDATE rompecabezas SET titulo='"+req.body.titulo+"', sonido='"+req.body.sonido+"', imagen='"+req.body.imagen+"', piezas="+req.body.piezas+" WHERE id="+req.body.id+";", function(err, result) {
+            if(err) {
+                return console.error('error running query', err);
+            }
+
+            client.end();
+            return res.json(result.rows);
+            
+        }); 
+    });
+});
+
+//SUBIR IMAGENES
+ app.post('/subir', (req, res) => {
+    req.fields; // contains non-file fields 
+    req.files; // contains files 
+    var form = new formidable.IncomingForm();
  
+    form.parse(req, function(err, fields, files) {
+      res.writeHead(200, {'content-type': 'text/plain'});
+
+    });
+
+    form.on('end', function(fields, files) {
+        /* Temporary location of our uploaded file */
+        var temp_path = this.openedFiles[0].path;
+        /* The file name of the uploaded file */
+        var file_name = this.openedFiles[0].name;
+        /* Location where we want to copy the uploaded file */
+        var new_location = 'public/rompecabeza/';
+        fs.copy(temp_path, new_location + file_name, function(err) {  
+            if (err) {
+                console.error(err);
+            } else {
+                console.log("success!")
+            }
+        });
+        res.end(file_name);
+    });
+    
+
+});
 //console.log("Servidor Express escuchando en modo %s", app.settings.env);
 
 
