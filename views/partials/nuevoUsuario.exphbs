@@ -23,7 +23,7 @@
     </fieldset>
    <br>
     <fieldset class="divBotonesUsuario">
-      <input type="button" id="btnGuardarUsuario" onclick="guardarUsuario()" value="GUARDAR" class="btnUsuarioVibrar"></input>
+      <input type="button" id="btnGuardarUsuario" onclick="guardarUsuario()" value="GUARDAR" class="iniciar btn"></input>
     </fieldset>
    
   </form>

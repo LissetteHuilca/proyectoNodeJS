@@ -1,7 +1,7 @@
  <body id="bodyFondo">
     <div class="container">
         
-        <a href="menuRompecabezas"><img src="../img/inicio.png" id="recargar"></a>
+        <a href="/menuRompecabezas"><img src="../img/inicio.png" id="recargar"></a>
         <button class="nuevoUsr" onclick='guardarRompecabeza()'>Guardar Rompecabeza</button>
         <div id="nombre">
             <h1 class="txtportada">ROMPECABEZA</h1>

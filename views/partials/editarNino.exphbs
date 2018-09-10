@@ -19,20 +19,18 @@
     </fieldset>
     <br>
     <br>
-    <fieldset class="divBotonesUsuario">
-      <input type="button" id="btnGuardarNino" onclick="guardarEditarNino()" value="GUARDAR" class="btnUsuarioVibrar"></input>
-    </fieldset>
+    
    
   </form>
               
-       </div>
+       
         <div id="divImagen" class="portada col-md-12 col-sm-12">IMAGEN</div>
         <div class="col-md-12 col-sm-12">
             <form enctype="multipart/form-data" class="formularioImagen">
                 <input name="archivo" type="file" id="imgPortada" />
                 <br />
                 <br />
-                <input type="button" class="añadirImagen" value="Añadir" />
+                <input type="button" class="añadirImagen anadir btn" value="Añadir" />
                 <br />
             </form>
             <!--div para visualizar mensajes-->
@@ -42,9 +40,14 @@
             <!--div para visualizar en el caso de imagen-->
             <div class="showImage"></div>
         </div>
+        
+        <fieldset class="divBotonesUsuario">
+      <input type="button" id="btnGuardarNino" onclick="guardarEditarNino()" value="GUARDAR" class="iniciar btn"></input>
+    </fieldset>
 
     </div>
     
     <div id="audioFondo">
+    </div>
     </div>
  </body>

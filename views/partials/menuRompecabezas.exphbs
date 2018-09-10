@@ -1,18 +1,19 @@
  <body onload="listarRompecabezasPorUsuario()" id="bodyFondo">
     <div class="container">
         
-         <a href="/"><img src="../img/inicio.png" id="recargar"></a>
+         <a href="/menu"><img src="../img/inicio.png" id="recargar"></a>
         
         <div id="nombre">
             <img src="../img/tema.png" class="img-fluid">
-            <br><a href="/nuevoRompecabeza">Nuevo Rompecabeza</a>
+            
         </div>
         
        <div class="row" id="lista">
               
        </div>
         
-
+        <a href="/nuevoRompecabeza"><button class="iniciar btn">Nuevo Rompecabeza</button></a>
+        
     </div>
     
  </body>

@@ -11,6 +11,5 @@
      <a class="nuevoUsr" href="/nuevoUsuario"><button class="iniciar btn">Nuevo Usuario</button></a>
     </div>
     
-    <div id="audioFondo">
-    </div>
+    
  </body>
