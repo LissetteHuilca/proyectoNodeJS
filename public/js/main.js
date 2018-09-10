@@ -130,11 +130,11 @@ function eliminarUsuario(idUsuario){
 
 function listarMenuUsuarios(){
     var usuarios=[];
-    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
-    $("#audioF")[0].play();
-    $("#audioF")[0].volume=0.4;
-    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mp3' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
-    $("#audioP")[0].play();
+//    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
+//    $("#audioF")[0].play();
+//    $("#audioF")[0].volume=0.4;
+//    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mp3' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
+//    $("#audioP")[0].play();
     $.ajax({
         url: '/listarUsuarios',
         type: 'GET',
@@ -263,7 +263,8 @@ function cargarNino() {
         success: function (data) {
             $("#nombre").val(data[0].nombre);
             $("#score").val(data[0].score);
-            $("#divImagen").html("<img class='imgPortada img-fluid' src='" + data[0].imagen + "' alt=''>");
+            $("#divImagen").html("<img class='imgPortada img-fluid' id='imagen' src='" + data[0].imagen + "' alt=''>");
+            
         },
         //si ha ocurrido un error
         error: function () {
@@ -369,8 +370,8 @@ function listarRompecabezasPorUsuario(){
                        <button  onclick='leerRmp("+objRmp.id+")'>\
                        <img class='imgPortada img-fluid' src='" + objRmp.imagen + "'alt=''>\
                        </button>\
-                       <button onclick='editarRmp("+objRmp.id+")'>Editar</button>\
-                       <button onclick='eliminarRmp("+objRmp.id+")'>Eliminar</button></div>");
+                       <button class='btnAdmin btn' onclick='editarRmp("+objRmp.id+")'>Editar</button>\
+                       <button class='btnAdmin btn' onclick='eliminarRmp("+objRmp.id+")'>Eliminar</button></div>");
                 }
             });	
         },
