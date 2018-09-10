@@ -1,0 +1,30 @@
+<body onload="cargarRmpUsuario()" id="fondoRompecabezas">
+    <div class="container">
+    
+        <div id="informacion">
+            <h1 id="titulo"></h1>
+             <h4>Piezas:</h4>
+             <p id="piezas"></p>
+
+            <div id="botones">
+                <a href="/"><img src="../img/inicio.png" id="recargar"></a>
+                <a href="" class="restartRmp"><img src="../img/recargar.png" id="recargar"></a>
+                <a href=/menuRompecabezas><img src="../img/regresar.png" id="regresar"></a>
+            </div>
+        </div>  
+        <div id="tablero" class="row">
+                <div id="divImagenRmp" class="portada col-md-12 col-sm-12"></div>
+                 
+                <div class="puzzleX999_paddedWrap">
+                   <div class="puzzleX999_imgWrap">
+                       <img class="puzzleX999_img" src="" alt="" />
+                       
+                   </div>
+            </div>
+        <div id="puzzleX999_Main"></div>
+        </div>
+    </div>
+    <div id="audioDiv">    
+    </div>
+    
+</body>

@@ -38,8 +38,10 @@
                     <div class="col-md-3 col-sm-3">
                          <h2>Piezas</h2>
                          <select id="piezas" style="width: 100%;" >
-                          <option value='2'>4</option>
-                          <option value='3'>9</option>
+                          <option>4</option>
+                          <option>6</option>
+                          <option>8</option>
+                          <option>9</option>
                         </select>
                     </div>
                 </div>
@@ -61,27 +63,6 @@
                     <div class="showImage"></div>
                 </div>
             </div>
-            
-            <div class="row" id="lista">
-                <div class="col-md-2 col-sm-2">
-                <button onclick="visualizar()">Visualizar</button>
-                </div>
-                <div id="divImagenRmp" class="portada col-md-8 col-sm-8"></div>
-                 <div class="restartPuzzleWrap">
-                      <span class="restart_puzzleX999">
-                          Restart Puzzle
-                      </span>
-                  </div>
-                <div class="puzzleX999_paddedWrap">
-                   <div class="puzzleX999_imgWrap">
-                       <img class="puzzleX999_img" src="https://images.unsplash.com/photo-1462524500090-89443873e2b4?dpr=1&auto=compress,format&crop=entropy&fit=crop&w=991&h=661&q=80" alt="" />
-                       <div id="puzzleX999_Main">
-                      </div>
-                   </div>
-                </div>
-            </div>
-            
-            
     </div>
     
     <div id="audioFondo">

@@ -2,7 +2,7 @@
     <div class="container">
         
          <a href="/"><img src="../img/inicio.png" id="recargar"></a>
-        
+        <a href="/cerrarsesion"><img src="../img/puerta.jpeg" id="recargar"></a>
         <div id="nombre">
         <h2>Menú Administrador</h2>
         

@@ -38,6 +38,8 @@
                          <h2>Piezas</h2>
                          <select id="piezas" style="width: 100%;" >
                           <option>4</option>
+                          <option>6</option>
+                          <option>8</option>
                           <option>9</option>
                         </select>
                     </div>
@@ -63,7 +65,7 @@
             
             <div class="row" id="lista">
                 <div class="col-md-4 col-sm-4">
-                <button onclick="visualizar()">Visualizar</button>
+               
                 </div>
                 <div id="divImagenRmp" class="portada col-md-4 col-sm-4"></div>
             </div>
