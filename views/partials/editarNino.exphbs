@@ -18,9 +18,6 @@
       <input placeholder="Puntos" id="score" type="number" tabindex="2">
     </fieldset>
     <br>
-    <fieldset>
-      <input placeholder="Imagen" id="imagen" type="text" tabindex="3">
-    </fieldset>
     <br>
     <fieldset class="divBotonesUsuario">
       <input type="button" id="btnGuardarNino" onclick="guardarEditarNino()" value="GUARDAR" class="btnUsuarioVibrar"></input>
@@ -29,7 +26,22 @@
   </form>
               
        </div>
-        
+        <div id="divImagen" class="portada col-md-12 col-sm-12">IMAGEN</div>
+        <div class="col-md-12 col-sm-12">
+            <form enctype="multipart/form-data" class="formularioImagen">
+                <input name="archivo" type="file" id="imgPortada" />
+                <br />
+                <br />
+                <input type="button" class="añadirImagen" value="Añadir" />
+                <br />
+            </form>
+            <!--div para visualizar mensajes-->
+            <div class="messagesE"></div>
+            <br />
+            <br />
+            <!--div para visualizar en el caso de imagen-->
+            <div class="showImage"></div>
+        </div>
 
     </div>
     
