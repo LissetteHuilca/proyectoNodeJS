@@ -33,8 +33,10 @@ function listarNiños(){
    var niños=[];
     $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
     $("#audioF")[0].play();
-    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mp3' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
+    $("#audioF")[0].volume=0.3;
+    $("#audioFondo").append("<audio autoplay id='audioP' controls><source volume='0.9' type='audio/mp3' src='..\/audios\/elegirpersonaje.mp3'></audio>");
     $("#audioP")[0].play();
+    $("#audioP")[0].volume=1;
     
     $.ajax({
         url: '/listarNinos',
@@ -130,6 +132,7 @@ function listarMenuUsuarios(){
     var usuarios=[];
     $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
     $("#audioF")[0].play();
+    $("#audioF")[0].volume=0.4;
     $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mp3' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
     $("#audioP")[0].play();
     $.ajax({
@@ -538,6 +541,9 @@ var intentos=0;
 var sonidobien;
 var sonidomal;
 function cargarRmpNino() {
+    
+    $("#audioDiv").html("<audio class='audioP' controls><source type='audio/mp3' src='../audios/presentarjuego.mp3'></audio>");
+    $(".audioP")[0].play();
     var idRmp = localStorage.getItem("idRmp");
     var idnino = localStorage.getItem("idnino");
     $.ajax({
@@ -612,6 +618,9 @@ function cargarRmpNino() {
 }
 
 function cargarRmpUsuario(){
+    $("#audioDiv").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
+    $("#audioF")[0].play();
+    $("#audioF")[0].volume=0.4;
     var idRmp=localStorage.getItem("idRmp");
     $.ajax({
         url: '/listarRompecbzPorId',
@@ -623,7 +632,6 @@ function cargarRmpUsuario(){
         success: function (data) {
             $("#titulo").html(data[0].titulo);
             $("#piezas").html(data[0].piezas);
-            $("#audioDiv").html("<audio controls><source type='audio/wav' id='sonido' src='"+data[0].sonido+"'></audio>");
             //$("#audioE")[0].play();
             //$("#divImagen").html("<img class='imgPortada img-fluid' id='imagen' src='" + data[0].imagen + "' alt=''>");
             $(".puzzleX999_img").attr('src',data[0].imagen);
@@ -699,15 +707,17 @@ function presionar(pieza){
     var bandera=0;
     $.each(palabraseparada, function(i, palabra){
         if(palabra=="correct"){
-            alert("Bien atinaste");
+            //alert("Bien atinaste");
             bandera++;
             $("#audioDiv").html("<audio class='audioA' controls><source type='audio/wav' src='"+sonidobien+"'></audio>");
-            console.log($(".audioA"));
+            //console.log($(".audioA"));
             $(".audioA")[0].play();
         }
     });
     if(bandera==0){
-        alert('Fallaste :(');
+        //alert('Fallaste :(');
+        $("#audioDiv").html("<audio class='audioA' controls><source type='audio/wav' src='../audios/incorrecto.mp3'></audio>");
+        $(".audioA")[0].play();
     }
 }
 function updatePuzzleImageHeight(){ puzzleContainer_pile.height($('.puzzleX999_img').height());
@@ -724,7 +734,8 @@ function start_puzzleX999(x, y){
         pile: puzzleContainer_pile,//where our puzzle while be contained, MUST be defined in the dom
         containment: containment,
         onComplete: function(){
-            alert('COMPLETASTE EL ROMPECABEZA!');
+            //alert('COMPLETASTE EL ROMPECABEZA!');
+            
             var piezas=x*y;
             var puntaje = $('#puntaje').html();
             if(intentos<=(piezas+4)){
@@ -738,6 +749,8 @@ function start_puzzleX999(x, y){
                     },
                     cache: false,
                     success: function (data) {
+                        $("#audioDiv").html("<audio class='audioA' controls><source type='audio/wav' src='../audios/ganaste.mp3'></audio>");
+                        $(".audioA")[0].play();
                     },
                     error: function (data) {
                         alert("error");
