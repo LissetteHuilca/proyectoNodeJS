@@ -1,4 +1,4 @@
-<body onload="recibirRmpNiño()" id="fondoRompecabezas">
+<body onload="cargarRmpNino()" id="fondoRompecabezas">
     <div class="container">
     
         <div id="informacion">
@@ -9,17 +9,26 @@
              <p id="intentos"></p>
 
             <div id="botones">
-                <a href="../"><img src="../img/inicio.png" id="recargar"></a>
+                <a href="/"><img src="../img/inicio.png" id="recargar"></a>
                 <a href="javascript:location.reload()"><img src="../img/recargar.png" id="recargar"></a>
-                <a href=listarRompecabezas><img src="../img/regresar.png" id="regresar"></a>
+                <a href=/listarRompecabezas><img src="../img/regresar.png" id="regresar"></a>
             </div>
         </div>  
         <div id="tablero" class="row">
-                <div class="fondoRmp row"></div>
-                <div class="col-sm-4 col-xs-4 piezas row"></div>
+        
+                <div id="divImagenRmp" class="portada col-md-6 col-sm-6"></div>
+                 
+                <div class="puzzleX999_paddedWrap">
+                   <div class="puzzleX999_imgWrap">
+                       <img class="puzzleX999_img" src="" alt="" />
+                       
+                   </div>
+            </div>
+            <div id="puzzleX999_Main" class="col-md-6 col-sm-6></div>
         
         </div>
     </div>
+    
     <div id="audioDiv">    
     </div>
     
