@@ -215,3 +215,118 @@ color: #3ADF00;
 .ninos{
     padding-top: 20px;
 }
+
+ body {
+   font-family: 'Roboto', sans-serif;
+    background: #ee9ca7; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #ee9ca7 , #ffdde1); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #ee9ca7 , #ffdde1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */      
+ }
+ 
+ * {
+   margin: 0;
+   padding: 0;
+ }
+ 
+ .ref_imgWrap {
+   max-width: 200px;
+   margin: 0 auto;
+   overflow: hidden;
+   margin-top: 1em;
+   position: relative;
+ }
+ 
+ .ref_imgWrap img {
+   max-width: 100%;
+   float: left;
+   height: auto;
+ }
+ 
+ .contRofl_clr,
+ .wrap {
+   width: 100%;
+   float: left;
+ }
+ 
+ .restartPuzzleWrap {
+   width: 100%;
+   float: left;
+   text-align: center;
+   padding: 1em 0;
+ }
+ 
+ .restart_puzzleX999 {
+   padding: 1.6em;
+   display: inline-block;
+   background: orange;
+   color: #ffffff;
+   letter-spacing: 1px;
+   font-weight: 300;
+   border-radius: 2px;
+   cursor: pointer;
+   -webkit-box-shadow: 1px 1px 6px 0px rgba(50, 50, 50, 0.35);
+    -moz-box-shadow:    1px 1px 6px 0px rgba(50, 50, 50, 0.35);
+    box-shadow:         1px 1px 6px 0px rgba(50, 50, 50, 0.35);
+ }
+
+.snappuzzle-piece {
+  -webkit-box-shadow: 1px 1px 6px 0px rgba(50, 50, 50, 0.35);
+    -moz-box-shadow:    1px 1px 6px 0px rgba(50, 50, 50, 0.35);
+    box-shadow:         1px 1px 6px 0px rgba(50, 50, 50, 0.35);  
+}
+ /* required snapPuzzle styles */
+ 
+ .puzzleX999_paddedWrap {
+   width: 100%;
+   float: left;
+   position: relative;
+   overflow: hidden;
+ }
+ 
+ .puzzleX999_imgWrap {
+   max-width: 560px;
+   padding: 5%;
+   padding-top: 0;
+   margin: 0 auto;
+   box-sizing: border-box;
+   position: relative;
+ }
+ 
+ .puzzleX999_imgWrap img {
+   max-width: 100%;
+   float: left;
+   height: auto;
+ }
+ 
+ .puzzleX999_relWrap {
+   position: relative;
+   display: block;
+   max-width: 500px;
+   float: left;
+ }
+ 
+ #puzzleX999_Main {
+   width: 100%;
+   float: left;
+    border: 2px solid black;
+ }
+ 
+ .snappuzzle-wrap {
+   position: relative;
+   display: block;
+ }
+ /*snappuzzle-pile { position: relative; }*/
+ 
+ .snappuzzle-piece {
+   cursor: move;
+ }
+ 
+ .snappuzzle-slot {
+   position: absolute;
+   background: #fff;
+   opacity: .8;
+ }
+ 
+ .snappuzzle-slot-hover {
+   background: #eee;
+ }
