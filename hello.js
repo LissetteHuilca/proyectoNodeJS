@@ -6,9 +6,9 @@ var multer = require('multer'); //multiple form data
 const pg    = require('pg');//postgres
 var cookieSession = require('cookie-session');
 pg.defaults.ssl = true;
-const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/juego_rompecabezas';
-var conString = "postgres://postgres:postgres@localhost:5432/juego_rompecabezas";
-//var conString = "postgres://ouotpxpfgzvdif:14f8728c627f11f8a487cdf5a21b6625efcf196a70f03529ebacd6aa9468c80e@ec2-54-163-249-237.compute-1.amazonaws.com:5432/df2rtm1mo3h4vl";
+const connectionString = process.env.DATABASE_URL || 'postgres://ec2-184-72-247-70.compute-1.amazonaws.com:5432/dflal1dkoa3lon';
+//var conString = "postgres://postgres:postgres@localhost:5432/juego_rompecabezas";
+var conString = "postgres://bkiypxqxkdxbts:a9602c5e82e0fa46a8c1716144078f25b70b2ba0e90c0ef7098ef4666302de7d@ec2-184-72-247-70.compute-1.amazonaws.com:5432/dflal1dkoa3lon";
 
 var express = require('express');
 var exphbs  = require('express-handlebars');
