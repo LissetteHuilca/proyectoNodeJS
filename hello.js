@@ -4,7 +4,7 @@ var http     = require('http'),
 
 var multer = require('multer'); //multiple form data
 const pg    = require('pg');//postgres
-
+var cookieSession = require('cookie-session');
 pg.defaults.ssl = true;
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/juego_rompecabezas';
 var conString = "postgres://postgres:postgres@localhost:5432/juego_rompecabezas";
@@ -17,7 +17,10 @@ var formidable = require('formidable'), //paa parsear upload files
     fs   = require('fs-extra'); //copiar img sin overwrite
 
 var app = express();
-
+app.use(cookieSession({
+  name: 'session',
+  keys: ['23']
+}))
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -39,36 +42,79 @@ app.get('/', function (req,res) {
 	res.render('partials/index');
 });
 
+app.post('/guardarsesion', function (req,res) {
+    req.session.usuario=req.body.usuariologeado;
+    res.end(req.session.usuario);
+});
+
 app.get('/iniciarsesion', function (req,res) {
 	res.render('partials/iniciarsesion');
 });
+app.get('/cerrarsesion', function (req,res) {
+	req.session=null;
+    res.render('partials/index');
+});
 
 app.get('/menu', function (req,res) {
-	res.render('partials/menu');
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/menu');
+    }
 });
 
 //rutas usuarios
 app.get('/menuUsuarios', function (req,res) {
-	res.render('partials/menuUsuarios');
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/menuUsuarios');
+    }
+	
 });
 app.get('/editarUsuario', function (req,res) {
-	res.render('partials/editarUsuario');
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/editarUsuario');
+    }
+	
 });
 
 app.get('/nuevoUsuario', function (req,res) {
-	res.render('partials/nuevoUsuario');
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/nuevoUsuario');
+    }
+	
 });
 
 //rutas niños
 app.get('/menuNinos', function (req,res) {
-	res.render('partials/menuNinos');
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/menuNinos');
+    }
+	
 });
 app.get('/nuevoNino', function (req,res) {
-	res.render('partials/nuevoNino');
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/nuevoNino');
+    }
+	
 });
 
 app.get('/editarNino', function (req,res) {
-	res.render('partials/editarNino');
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/editarNino');
+    }
+	
 });
 
 app.get('/rompecabezanino', function (req,res) {
@@ -77,7 +123,12 @@ app.get('/rompecabezanino', function (req,res) {
 
 //rutas rompecabezas
 app.get('/nuevoRompecabeza', function (req,res) {
-	res.render('partials/nuevoRompecabeza');
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/nuevoRompecabeza');
+    }
+	
 });
 
 app.get('/listarRompecabezas', function (req,res) {
@@ -85,10 +136,28 @@ app.get('/listarRompecabezas', function (req,res) {
 });
 
 app.get('/menuRompecabezas', function (req,res) {
-	res.render('partials/menuRompecabezas');	
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/menuRompecabezas');	
+    }
+	
 });
 app.get('/editarRompecabeza', function (req,res) {
-	res.render('partials/editarRompecabeza');	
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/editarRompecabeza');	
+    }
+	
+});
+app.get('/leerrompecabezausuario', function (req,res) {
+    if(req.session.usuario==undefined){
+        res.render('partials/index');
+    }else{
+        res.render('partials/leerrompecabezausuario');	
+    }
+	
 });
 
 //CRUD USUARIOS
@@ -394,7 +463,25 @@ app.post('/guardarEditarRompecabeza', (req, res) => {
         }); 
     });
 });
+app.post('/guardarPuntaje', (req, res) => {
+    var client = new pg.Client(conString);
+    client.connect(function(err) {
+        if(err) {
+            return console.error('could not connect to postgres', err);
+            return res.status(500).json({success: false, data: err});
+        }
 
+        client.query("UPDATE ninos SET score="+req.body.nuevopuntaje+" WHERE id="+req.body.idnino+";", function(err, result) {
+            if(err) {
+                return console.error('error running query', err);
+            }
+
+            client.end();
+            return res.json(result.rows);
+            
+        }); 
+    });
+});
 //SUBIR IMAGENES
  app.post('/subir', (req, res) => {
     req.fields; // contains non-file fields 
