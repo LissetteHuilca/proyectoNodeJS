@@ -757,6 +757,10 @@ function start_puzzleX999(x, y){
                         console.log(data);
                     }
                 });
+            }else{
+                alert("No ganaste puntos :c");
+                $("#audioDiv").html("<audio class='audioA' controls><source type='audio/mp3' src='../audios/perdiste.mp3'></audio>");
+                $(".audioA")[0].play();
             }
             //puzzle_endTime = Date.parse(new Date());
             //getKompletionTime_str(puzzle_startTime, puzzle_endTime);                    

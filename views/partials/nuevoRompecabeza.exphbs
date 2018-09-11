@@ -2,7 +2,7 @@
     <div class="container">
         
         <a href="/menuRompecabezas"><img src="../img/inicio.png" id="recargar"></a>
-        <button class="nuevoUsr" onclick='guardarRompecabeza()'>Guardar Rompecabeza</button>
+        <button class="btnAdmin btn" onclick='guardarRompecabeza()'>Guardar Rompecabeza</button>
         <div id="nombre">
             <h1 class="txtportada">ROMPECABEZA</h1>
            
@@ -19,7 +19,7 @@
                         <input name="archivo" type="file" id="sonido" />
                         <br />
                         <br />
-                        <input type="button" class="añadirSonido" value="Añadir" />
+                        <input type="button" class="añadirSonido btnAdmin btn" value="Añadir" />
                         <br />
                     </form>
                     <!--div para visualizar mensajes-->
@@ -37,7 +37,7 @@
                 <div class="col-sm-3">
                     <div class="col-md-3 col-sm-3">
                          <h2>Piezas</h2>
-                         <select id="piezas" style="width: 100%;" >
+                         <select id="piezas">
                           <option>4</option>
                           <option>6</option>
                           <option>8</option>
@@ -52,7 +52,7 @@
                         <input name="archivo" type="file" id="imgPortada" />
                         <br />
                         <br />
-                        <input type="button" class="añadirImagen" value="Añadir" />
+                        <input type="button" class="añadirImagen btnAdmin btn" value="Añadir" />
                         <br />
                     </form>
                     <!--div para visualizar mensajes-->
