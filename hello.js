@@ -517,4 +517,5 @@ app.post('/guardarPuntaje', (req, res) => {
 
 console.log("Servidor iniciado");
     // escuchar
-    app.listen(8080);
+app.listen(process.env.PORT || 8080, function(){console.log("the server is running");});
+
