@@ -1,8 +1,8 @@
 function listarRompecabezas(){
    var rompecabezas=[];
-    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
+    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/mpeg' src='..\/audios\/lagranja.mp3'></audio>");
     $("#audioF")[0].play();
-    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mp3' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
+    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mpeg' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
     $("#audioP")[0].play();
     $.ajax({
         url: '/listarRompecbz',
@@ -31,10 +31,10 @@ function listarRompecabezas(){
 
 function listarNiños(){
    var niños=[];
-    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
+    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/mpeg' src='..\/audios\/lagranja.mp3'></audio>");
     $("#audioF")[0].play();
     $("#audioF")[0].volume=0.3;
-    $("#audioFondo").append("<audio autoplay id='audioP' controls><source volume='0.9' type='audio/mp3' src='..\/audios\/elegirpersonaje.mp3'></audio>");
+    $("#audioFondo").append("<audio autoplay id='audioP' controls><source volume='0.9' type='audio/mpeg' src='..\/audios\/elegirpersonaje.mp3'></audio>");
     $("#audioP")[0].play();
     $("#audioP")[0].volume=1;
     
@@ -193,9 +193,8 @@ function editarUsuario(idUsuario) {
 //NIÑO
 function listarMenuNinos(){
    var niños=[];
-    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
-    $("#audioF")[0].play();
-    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mp3' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
+    $("#audioFondo").append("<audio loop id='audioF' controls><source type='audio/mpeg' src='..\/audios\/lagranja.mp3'></audio>");
+    $("#audioFondo").append("<audio autoplay id='audioP' controls><source  type='audio/mpeg' src='..\/audios\/eligeRompecabezas.mp3'></audio>");
     $("#audioP")[0].play();
     
     $.ajax({
@@ -397,7 +396,7 @@ $('.añadirSonido').click(function () {
         contentType: false,//obligatorio para enviar formularios
         processData: false,
         success: function (data) {
-                $("#divSonido").html("<audio class='styleAudio' controls><source id='sonido' src='../rompecabeza/"+data+"' type='audio/mp3' ></audio>")
+                $("#divSonido").html("<audio class='styleAudio' controls><source id='sonido' src='../rompecabeza/"+data+"' type='audio/mpeg' ></audio>")
         }
     });
 });
@@ -522,7 +521,7 @@ function validar(){
             });
 
             if(flag==0){
-               $("#audioError").html("<audio id='audioE' controls><source type='audio/wav' src='..\/audios\/datosincorrectos.mp3'></audio>");
+               $("#audioError").html("<audio id='audioE' controls><source type='audio/mpeg' src='..\/audios\/datosincorrectos.mp3'></audio>");
                $("#audioE")[0].play();
             }
         },
@@ -543,7 +542,7 @@ var sonidobien;
 var sonidomal;
 function cargarRmpNino() {
     
-    $("#audioDiv").html("<audio class='audioP' controls><source type='audio/mp3' src='../audios/presentarjuego.mp3'></audio>");
+    $("#audioDiv").html("<audio class='audioP' controls><source type='audio/mpeg' src='../audios/presentarjuego.mp3'></audio>");
     $(".audioP")[0].play();
     var idRmp = localStorage.getItem("idRmp");
     var idnino = localStorage.getItem("idnino");
@@ -619,8 +618,7 @@ function cargarRmpNino() {
 }
 
 function cargarRmpUsuario(){
-    $("#audioDiv").append("<audio loop id='audioF' controls><source type='audio/wav' src='..\/audios\/lagranja.mp3'></audio>");
-    $("#audioF")[0].play();
+    $("#audioDiv").append("<audio loop id='audioF' controls><source type='audio/mpeg' src='..\/audios\/lagranja.mp3'></audio>");
     $("#audioF")[0].volume=0.4;
     var idRmp=localStorage.getItem("idRmp");
     $.ajax({
@@ -711,14 +709,14 @@ function presionar(pieza){
         if(palabra=="correct"){
             //alert("Bien atinaste");
             bandera++;
-            $("#audioDiv").html("<audio class='audioA' controls><source type='audio/wav' src='"+sonidobien+"'></audio>");
+            $("#audioDiv").html("<audio class='audioA' controls><source type='audio/mpeg' src='"+sonidobien+"'></audio>");
             //console.log($(".audioA"));
             $(".audioA")[0].play();
         }
     });
     if(bandera==0){
         //alert('Fallaste :(');
-        $("#audioDiv").html("<audio class='audioA' controls><source type='audio/wav' src='../audios/incorrecto.mp3'></audio>");
+        $("#audioDiv").html("<audio class='audioA' controls><source type='audio/mpeg' src='../audios/incorrecto.mp3'></audio>");
         $(".audioA")[0].play();
     }
 }
