@@ -35,7 +35,7 @@ app.engine( 'exphbs', exphbs( {
 } ) );
 
 app.set( 'view engine', 'exphbs' );
-app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 8080))
 
 //RUTAS
 app.get('/', function (req,res) {
@@ -517,4 +517,4 @@ app.post('/guardarPuntaje', (req, res) => {
 
 console.log("Servidor iniciado");
     // escuchar
-    app.listen(5000);
+    app.listen(8080);
