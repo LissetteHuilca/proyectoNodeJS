@@ -703,6 +703,7 @@ $('.restartRmp').on('click', function(){
 });
 function presionar(pieza){
    intentos++;
+    $("#intentos").html(intentos);
   var txtClass=pieza.getAttribute("class");
   var palabraseparada = txtClass.split(" ");
     var bandera=0;
