@@ -1,9 +1,9 @@
 <body onload ="listarNiños()"> 
 <div class="container"> 
   
+  <div class="btnIniciar"><a href="/iniciarsesion">Iniciar Sesión</a></div>
   <div id="logo"><img src="img/rompecabeza.png" id="nombreRmp" class="img-fluid"> </div>
   
-<div class="btnIniciar"><a href="/iniciarsesion">Iniciar Sesión</a></div>
   
 <div class="row" id="listaNiños">
               
