@@ -3,7 +3,7 @@
   
   <div id="logo"><img src="img/rompecabeza.png" id="nombreRmp" class="img-fluid"> </div>
   
-<div class="btnIniciar">  <a href="/iniciarsesion"><button class="btn iniciar">Iniciar Sesión</button></a> </div>
+<div class="btnIniciar"><a href="/iniciarsesion">Iniciar Sesión</a></div>
   
 <div class="row" id="listaNiños">
               
